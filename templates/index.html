@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax提交数据</title>
+  <script src="../static/jq/jquery-2.1.0.js"></script>
+{#  '''#}
+{#  ajax使用有5步#}
+{#  1创建异步对象#}
+{#  2设置请求方式和请求地址#}
+{#  3发送请求#}
+{#  4监听状态的变化#}
+{#  5处理返回的结果#}
+{#  '''#}
+  <script>
+    function tijiao(){
+        {#获取id = id1的值#}
+        var id1var =  $("#id1").val();
+        {#如果不为null   或者不为 ""#}
+        if(id1var!=null && id1var!=""){
+
+            $.ajax({
+             type: "post",
+             {# 数据来自于 17 行#}
+             url: "/login/",
+                {#格式   json  传递数据给/login/ 视图#}
+             data: {
+                 'username':id1var
+             },
+
+             dataType: "json",
+             success: function(data){
+                 console.log(data);
+                 alert("提交成功!");
+             }
+         });
+        }else{
+            alert("不能为空");
+        }
+    }
+
+
+
+
+    function send_data(){
+        {#获取id = id1的值#}
+        var p1 =  $("#p1").val();
+        {#如果不为null   或者不为 ""#}
+        if(p1 != null && p1 != ""){
+
+            $.ajax({
+             type: "post",
+             {# 数据来自于 17 行#}
+             url: "/yyy/",
+             data: {
+                 'password':p1
+             },
+             dataType: "json",
+             success: function(data){
+                 console.log(data);
+                 alert("提交成功!");
+
+             }
+         });
+        }else{
+            alert("不能为空");
+        }
+    }
+
+  </script>
+</head>
+<body>
+<p>hello</p>
+
+
+{#通过ajax给后端flask进行传递删数据#}
+username:<input id="id1" value="">
+<a href="javaScript:tijiao()">提交</a>
+
+<br><br><br><br>
+
+password:<input id="p1" value="">
+<a href="javaScript:send_data()">密码提交</a>
+</body>
+</html>
