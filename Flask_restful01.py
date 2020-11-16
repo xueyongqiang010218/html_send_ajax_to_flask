@@ -111,6 +111,7 @@ api.add_resource(Send_ajax, "/yyy/")
 
 @app.route('/')
 def hello_world():
+    print("主页")
     return render_template("index.html")
 
 
